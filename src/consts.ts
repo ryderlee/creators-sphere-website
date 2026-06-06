@@ -43,7 +43,7 @@ export const GOVERNING_LAW = 'Singapore';
 /** Social handles (used in footer). Empty string hides the link. */
 export const SOCIAL = {
   instagram: 'https://instagram.com/creatorssphere',
-  threads: 'https://threads.net/@creatorssphere',
+  threads: '',
   tiktok: '',
   linkedin: '',
 };
