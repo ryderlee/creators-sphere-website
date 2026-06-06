@@ -1,4 +1,5 @@
 ---
+import { url } from "../base.ts";
 import Legal from '../layouts/Legal.astro';
 import { LEGAL_ENTITY, LEGAL_ADDRESS, PRIVACY_EMAIL, SUPPORT_EMAIL } from '../consts.ts';
 ---
@@ -53,7 +54,7 @@ import { LEGAL_ENTITY, LEGAL_ADDRESS, PRIVACY_EMAIL, SUPPORT_EMAIL } from '../co
   </table>
 
   <h2>4. Data retention</h2>
-  <p>We keep your personal data only for as long as your account is active or as needed to provide the service, comply with legal obligations, resolve disputes and enforce agreements. You may request deletion at any time — see <a href="/account-deletion">Delete my data</a>.</p>
+  <p>We keep your personal data only for as long as your account is active or as needed to provide the service, comply with legal obligations, resolve disputes and enforce agreements. You may request deletion at any time — see <a href={url('/account-deletion')}>Delete my data</a>.</p>
 
   <h2>5. Security</h2>
   <p>We use industry-standard measures including encrypted transport (HTTPS), tokenised authentication (OAuth 2.0 with PKCE) and secure on-device storage for credentials. No method of transmission is perfectly secure, but we work to protect your data.</p>

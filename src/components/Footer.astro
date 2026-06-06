@@ -1,8 +1,9 @@
 ---
+import { url } from "../base.ts";
 import Logo from './Logo.astro';
 import { ADMIN_PORTAL_URL, CONTACT_EMAIL, SOCIAL, SITE_NAME, LEGAL_LAST_UPDATED } from '../consts.ts';
 const year = 2026;
-const social = Object.entries(SOCIAL).filter(([, url]) => url);
+const social = Object.entries(SOCIAL).filter(([, link]) => link);
 ---
 <footer class="ft grain">
   <div class="wrap wrap-wide">
@@ -11,31 +12,31 @@ const social = Object.entries(SOCIAL).filter(([, url]) => url);
         <Logo onDark />
         <p>Paid brand campaigns for creators in Singapore. Discover, create, get paid — all from one app.</p>
         <div class="ft-social">
-          {social.map(([name, url]) => (
-            <a href={url} target="_blank" rel="noopener" aria-label={name}>{name}</a>
+          {social.map(([name, link]) => (
+            <a href={link} target="_blank" rel="noopener" aria-label={name}>{name}</a>
           ))}
         </div>
       </div>
 
       <nav class="ft-col" aria-label="Product">
         <h4>Product</h4>
-        <a href="/#how">How it works</a>
-        <a href="/#creators">For Creators</a>
-        <a href="/for-brands">For Brands</a>
+        <a href={url('/#how')}>How it works</a>
+        <a href={url('/#creators')}>For Creators</a>
+        <a href={url('/for-brands')}>For Brands</a>
         <a href={ADMIN_PORTAL_URL} target="_blank" rel="noopener">Admin Portal ↗</a>
       </nav>
 
       <nav class="ft-col" aria-label="Legal">
         <h4>Legal</h4>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/terms">Terms of Service</a>
-        <a href="/cookies">Cookie Notice</a>
-        <a href="/account-deletion">Delete my data</a>
+        <a href={url('/privacy')}>Privacy Policy</a>
+        <a href={url('/terms')}>Terms of Service</a>
+        <a href={url('/cookies')}>Cookie Notice</a>
+        <a href={url('/account-deletion')}>Delete my data</a>
       </nav>
 
       <nav class="ft-col" aria-label="Support">
         <h4>Support</h4>
-        <a href="/support">Help &amp; Contact</a>
+        <a href={url('/support')}>Help &amp; Contact</a>
         <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
       </nav>
     </div>

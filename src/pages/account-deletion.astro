@@ -1,4 +1,5 @@
 ---
+import { url } from "../base.ts";
 import Legal from '../layouts/Legal.astro';
 import { PRIVACY_EMAIL, SUPPORT_EMAIL } from '../consts.ts';
 ---
@@ -36,5 +37,5 @@ import { PRIVACY_EMAIL, SUPPORT_EMAIL } from '../consts.ts';
   <p>Account deletion requests are completed within <strong>30 days</strong>. You will receive confirmation once the deletion is complete.</p>
 
   <hr />
-  <p>Need help? Contact <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> or visit our <a href="/support">support page</a>.</p>
+  <p>Need help? Contact <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> or visit our <a href={url('/support')}>support page</a>.</p>
 </Legal>

@@ -1,4 +1,5 @@
 ---
+import { url } from "../base.ts";
 import Layout from '../layouts/Layout.astro';
 import { ADMIN_PORTAL_URL } from '../consts.ts';
 
@@ -50,7 +51,7 @@ const stats = [
         </div>
       </div>
       <div class="b-hero-visual" data-reveal style="--reveal-delay:120ms">
-        <img src="/img/brands-work.jpg" alt="A marketing team reviewing a campaign" loading="eager" />
+        <img src={url('/img/brands-work.jpg')} alt="A marketing team reviewing a campaign" loading="eager" />
         <div class="bv-card">
           <span class="bv-chip">Live campaign</span>
           <strong>Summer Glow</strong>
@@ -111,7 +112,7 @@ const stats = [
         <p>Sign in to the admin portal to brief your first campaign, or talk to us about onboarding your brand.</p>
         <div class="b-final-cta">
           <a href={ADMIN_PORTAL_URL} target="_blank" rel="noopener" class="btn btn-brand btn-lg">Go to Admin Portal ↗</a>
-          <a href="/support" class="btn btn-ghost btn-lg on-dark-ghost">Talk to us</a>
+          <a href={url('/support')} class="btn btn-ghost btn-lg on-dark-ghost">Talk to us</a>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 ---
+import { url } from "../base.ts";
 import Layout from '../layouts/Layout.astro';
 import PhoneMock from '../components/PhoneMock.astro';
 import AppBadges from '../components/AppBadges.astro';
@@ -70,9 +71,9 @@ function icon(name: string) {
       </div>
 
       <div class="hero-visual" data-reveal style="--reveal-delay:180ms">
-        <div class="float-card fc-1"><img src="/img/hero-creator.jpg" alt="A creator filming content on a phone" loading="eager" /></div>
+        <div class="float-card fc-1"><img src={url('/img/hero-creator.jpg')} alt="A creator filming content on a phone" loading="eager" /></div>
         <PhoneMock />
-        <div class="float-card fc-2"><img src="/img/gal-phone.jpg" alt="An Instagram feed on a phone" loading="eager" /></div>
+        <div class="float-card fc-2"><img src={url('/img/gal-phone.jpg')} alt="An Instagram feed on a phone" loading="eager" /></div>
         <div class="payout-pill">
           <span class="po-dot"></span>
           <div><strong>+ $180 earned</strong><small>Glow Labs · just now</small></div>
@@ -145,19 +146,19 @@ function icon(name: string) {
       </div>
       <div class="niche-tiles">
         {niches.map((n, i) => (
-          <a href="/#download" class="niche-tile" data-reveal style={`--reveal-delay:${i * 70}ms`}>
-            <img src={n.img} alt={`${n.t} creators`} loading="lazy" />
+          <a href={url('/#download')} class="niche-tile" data-reveal style={`--reveal-delay:${i * 70}ms`}>
+            <img src={url(n.img)} alt={`${n.t} creators`} loading="lazy" />
             <span class="niche-scrim"></span>
             <span class="niche-label">{n.t}</span>
           </a>
         ))}
       </div>
       <div class="mosaic" data-reveal>
-        <div class="ms ms-tall"><img src="/img/gal-fashion.jpg" alt="Streetwear creator" loading="lazy" /></div>
-        <div class="ms"><img src="/img/gal-food.jpg" alt="Food campaign" loading="lazy" /></div>
-        <div class="ms"><img src="/img/gal-beauty.jpg" alt="Beauty creator" loading="lazy" /></div>
-        <div class="ms ms-wide"><img src="/img/hero-studio.jpg" alt="Creator studio set-up" loading="lazy" /></div>
-        <div class="ms ms-tall"><img src="/img/gal-camera.jpg" alt="Creator with a camera" loading="lazy" /></div>
+        <div class="ms ms-tall"><img src={url('/img/gal-fashion.jpg')} alt="Streetwear creator" loading="lazy" /></div>
+        <div class="ms"><img src={url('/img/gal-food.jpg')} alt="Food campaign" loading="lazy" /></div>
+        <div class="ms"><img src={url('/img/gal-beauty.jpg')} alt="Beauty creator" loading="lazy" /></div>
+        <div class="ms ms-wide"><img src={url('/img/hero-studio.jpg')} alt="Creator studio set-up" loading="lazy" /></div>
+        <div class="ms ms-tall"><img src={url('/img/gal-camera.jpg')} alt="Creator with a camera" loading="lazy" /></div>
       </div>
     </div>
   </section>
@@ -177,11 +178,11 @@ function icon(name: string) {
         </ul>
         <div class="brands-cta">
           <a href={ADMIN_PORTAL_URL} target="_blank" rel="noopener" class="btn btn-brand btn-lg">Go to Admin Portal ↗</a>
-          <a href="/for-brands" class="btn btn-ghost btn-lg on-dark-ghost">See how it works</a>
+          <a href={url('/for-brands')} class="btn btn-ghost btn-lg on-dark-ghost">See how it works</a>
         </div>
       </div>
       <div class="brands-visual" data-reveal style="--reveal-delay:120ms">
-        <img src="/img/brands-work.jpg" alt="A marketing team planning a campaign" loading="lazy" />
+        <img src={url('/img/brands-work.jpg')} alt="A marketing team planning a campaign" loading="lazy" />
         <div class="bv-card">
           <span class="bv-chip">Live campaign</span>
           <strong>Summer Glow</strong>
@@ -220,7 +221,7 @@ function icon(name: string) {
         <h2>Ready to get paid for what you <span class="grad-text">already do?</span></h2>
         <p>Join Creators Sphere and turn your next post into your next paycheck.</p>
         <div class="final-badges"><AppBadges onDark /></div>
-        <a href="/for-brands" class="final-brands">Are you a brand? Explore the campaign platform →</a>
+        <a href={url('/for-brands')} class="final-brands">Are you a brand? Explore the campaign platform →</a>
       </div>
     </div>
   </section>

@@ -1,6 +1,7 @@
 ---
 // Stylized in-app screen rendered with the product's own design tokens
 // (mirrors the campaign card from the mobile app's home_mockup_v2).
+import { url } from '../base.ts';
 ---
 <div class="phone" aria-hidden="true">
   <div class="phone-screen">
@@ -21,7 +22,7 @@
     <p class="sec-h">Fresh campaigns</p>
 
     <div class="ccard">
-      <div class="ccard-img img-a">
+      <div class="ccard-img img-a" style={`background-image:url('${url('/img/cat-beauty.jpg')}')`}>
         <span class="chip chip-ink tag">Beauty</span>
         <span class="reward">$180</span>
       </div>
@@ -33,7 +34,7 @@
     </div>
 
     <div class="ccard mini">
-      <div class="ccard-img img-b"></div>
+      <div class="ccard-img img-b" style={`background-image:url('${url('/img/cat-food.jpg')}')`}></div>
       <div class="ccard-body">
         <span class="brand">KOPI &amp; CO</span>
         <h4>Café reel · 1 post</h4>
@@ -82,8 +83,8 @@
 
   .ccard { background: #fff; border: 1px solid var(--hair); border-radius: 18px; padding: 7px; box-shadow: var(--shadow-sm); margin-bottom: 11px; }
   .ccard-img { height: 118px; border-radius: 12px; position: relative; background-size: cover; background-position: center; }
-  .img-a { background-image: url('/img/cat-beauty.jpg'); }
-  .img-b { width: 60px; height: 60px; border-radius: 12px; background-image: url('/img/cat-food.jpg'); background-size: cover; background-position: center; flex: none; }
+  .img-a { background-size: cover; background-position: center; }
+  .img-b { width: 60px; height: 60px; border-radius: 12px; background-size: cover; background-position: center; flex: none; }
   .tag { position: absolute; top: 9px; left: 9px; }
   .reward { position: absolute; bottom: 9px; right: 9px; background: #fff; color: var(--coral-deep); font-family: var(--font-display); font-weight: 800; font-size: 14px; padding: 4px 10px; border-radius: 100px; box-shadow: var(--shadow-sm); }
   .ccard-body { padding: 9px 6px 4px; }

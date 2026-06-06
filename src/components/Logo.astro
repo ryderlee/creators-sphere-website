@@ -1,10 +1,11 @@
 ---
+import { url } from "../base.ts";
 // Creators Sphere wordmark: a gradient "sphere" with an orbiting creator dot.
 interface Props { onDark?: boolean; compact?: boolean; }
 const { onDark = false, compact = false } = Astro.props;
 const id = 'lg' + Math.random().toString(36).slice(2, 8);
 ---
-<a href="/" class="logo" aria-label="Creators Sphere — home">
+<a href={url('/')} class="logo" aria-label="Creators Sphere — home">
   <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
     <defs>
       <linearGradient id={id} x1="2" y1="3" x2="31" y2="31" gradientUnits="userSpaceOnUse">

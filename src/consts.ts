@@ -3,8 +3,12 @@
 // Change links / contact info here and they propagate everywhere.
 // ─────────────────────────────────────────────────────────────────────────────
 
-/** Canonical site origin (used for <link rel=canonical>, sitemap, OG URLs). */
-export const SITE_URL = 'https://creatorssphere.sg';
+/**
+ * Origin used for absolute URLs (canonical, OG tags).
+ * Preview deploy = GitHub Pages. For production, switch to
+ * 'https://creatorssphere.sg' (and set base: '/' in astro.config.mjs).
+ */
+export const SITE_URL = 'https://ryderlee.github.io';
 
 export const SITE_NAME = 'Creators Sphere';
 export const SITE_TAGLINE = 'Your next paycheck is one tap away';

@@ -1,4 +1,5 @@
 ---
+import { url } from "../base.ts";
 import Logo from './Logo.astro';
 import { NAV_LINKS } from '../consts.ts';
 ---
@@ -7,11 +8,11 @@ import { NAV_LINKS } from '../consts.ts';
     <Logo />
 
     <nav class="nav-pill" aria-label="Primary">
-      {NAV_LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
+      {NAV_LINKS.map((l) => <a href={url(l.href)}>{l.label}</a>)}
     </nav>
 
     <div class="hdr-actions">
-      <a href="/#download" class="btn btn-primary hdr-cta">Get the app</a>
+      <a href={url('/#download')} class="btn btn-primary hdr-cta">Get the app</a>
       <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
@@ -19,8 +20,8 @@ import { NAV_LINKS } from '../consts.ts';
   </div>
 
   <div class="mobile-menu" id="mobile-menu" hidden>
-    {NAV_LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
-    <a href="/#download" class="btn btn-primary mm-cta">Get the app</a>
+    {NAV_LINKS.map((l) => <a href={url(l.href)}>{l.label}</a>)}
+    <a href={url('/#download')} class="btn btn-primary mm-cta">Get the app</a>
   </div>
 </header>
 

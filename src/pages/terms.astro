@@ -1,4 +1,5 @@
 ---
+import { url } from "../base.ts";
 import Legal from '../layouts/Legal.astro';
 import { LEGAL_ENTITY, GOVERNING_LAW, SUPPORT_EMAIL } from '../consts.ts';
 ---
@@ -42,7 +43,7 @@ import { LEGAL_ENTITY, GOVERNING_LAW, SUPPORT_EMAIL } from '../consts.ts';
   <p>You retain ownership of the content you create. By submitting content to a campaign, you grant the relevant brand the licence described in that campaign's terms, and you grant us a limited licence to host and display your submissions to operate the service.</p>
 
   <h2>7. Suspension &amp; termination</h2>
-  <p>We may suspend or terminate your account if you breach these Terms, engage in fraud, or create risk for other users or brands. You may stop using the service and delete your account at any time — see <a href="/account-deletion">Delete my data</a>.</p>
+  <p>We may suspend or terminate your account if you breach these Terms, engage in fraud, or create risk for other users or brands. You may stop using the service and delete your account at any time — see <a href={url('/account-deletion')}>Delete my data</a>.</p>
 
   <h2>8. Disclaimers</h2>
   <p>The service is provided "as is" without warranties of any kind. We do not guarantee that you will be selected for campaigns or earn any particular amount. We are not responsible for the conduct of brands or other users.</p>
