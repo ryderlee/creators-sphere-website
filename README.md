@@ -38,6 +38,26 @@ src/
 public/img/                # curated Unsplash photos (see CREDITS.md)
 ```
 
+## Hosting
+
+Deployed to **GitHub Pages** via `.github/workflows/deploy.yml` on every push to `main`.
+
+- **Live:** https://ryderlee.github.io/creators-sphere-website/
+- Repo: `ryderlee/creators-sphere-website` (private; the published site is public).
+- Served at a project **subpath**, so all internal links use the `url()` helper
+  (`src/base.ts`) which prefixes Astro's `BASE_URL`.
+
+### Switch to the custom domain (creatorssphere.sg)
+
+1. `src/consts.ts` → `SITE_URL = 'https://creatorssphere.sg'`
+2. `astro.config.mjs` → `base: '/'`
+3. Recreate `public/CNAME` containing `creatorssphere.sg`
+4. At your DNS provider, point the apex to GitHub Pages:
+   `A 185.199.108.153`, `.109.153`, `.110.153`, `.111.153` (and AAAA `2606:50c0:8000::153` …`8003::153`)
+5. Push. In repo Settings → Pages, set the custom domain and enable HTTPS.
+
+The `url()` helper makes every link resolve correctly at the root automatically.
+
 ## Before launch — checklist
 
 - [ ] Set the real **admin portal URL** (`ADMIN_PORTAL_URL` in `src/consts.ts`).
