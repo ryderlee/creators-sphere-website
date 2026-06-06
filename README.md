@@ -44,6 +44,7 @@ Deployed to **GitHub Pages** via `.github/workflows/deploy.yml` on every push to
 
 - **Live:** https://ryderlee.github.io/creators-sphere-website/
 - Repo: `ryderlee/creators-sphere-website` (private; the published site is public).
+- **Ship a change:** `npm run deploy -- "your message"` — see [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 - Served at a project **subpath**, so all internal links use the `url()` helper
   (`src/base.ts`) which prefixes Astro's `BASE_URL`.
 
