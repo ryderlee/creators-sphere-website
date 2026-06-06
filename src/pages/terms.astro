@@ -1,0 +1,61 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { LEGAL_ENTITY, GOVERNING_LAW, SUPPORT_EMAIL } from '../consts.ts';
+---
+<Legal
+  title="Terms of Service"
+  description="The terms governing your use of Creators Sphere."
+  intro={`These Terms of Service ("Terms") govern your access to and use of the Creators Sphere app and website, operated by ${LEGAL_ENTITY}. By creating an account, you agree to these Terms.`}
+>
+  <h2>1. Eligibility</h2>
+  <p>You must be at least 18 years old and able to form a binding contract to use Creators Sphere. By using the service, you confirm that you meet these requirements and that the information you provide is accurate.</p>
+
+  <h2>2. Your account</h2>
+  <ul>
+    <li>You are responsible for keeping your login credentials secure and for all activity under your account.</li>
+    <li>You agree to provide accurate information and to keep it up to date.</li>
+    <li>You may connect third-party social accounts (Instagram, Threads, Facebook); you remain bound by those platforms' terms.</li>
+  </ul>
+
+  <h2>3. How campaigns work</h2>
+  <ul>
+    <li>Brands post campaigns ("gigs") that may be open to all eligible creators or invite-only.</li>
+    <li>Applying to or accepting a campaign forms an agreement between you and the brand, subject to the campaign's stated deliverables and reward.</li>
+    <li>Some campaigns require content vetting and proof submission before a reward is confirmed.</li>
+    <li>Creators Sphere facilitates these connections but is not a party to the underlying agreement between you and a brand, except where we expressly act as a payment facilitator.</li>
+  </ul>
+
+  <h2>4. Rewards &amp; payments</h2>
+  <p>Each campaign displays its reward before you apply. Rewards are released after you complete the deliverables and your proof is verified, in line with the campaign terms. You are responsible for any taxes arising from rewards you receive.</p>
+
+  <h2>5. Acceptable use</h2>
+  <p>You agree not to:</p>
+  <ul>
+    <li>Submit fake, plagiarised, purchased or misleading content, engagement or metrics.</li>
+    <li>Misrepresent your identity, audience or eligibility.</li>
+    <li>Use the service for any unlawful, harmful or fraudulent purpose.</li>
+    <li>Interfere with, scrape or attempt to breach the security of the service.</li>
+    <li>Violate the content guidelines or disclosure requirements of any campaign or platform.</li>
+  </ul>
+
+  <h2>6. Content &amp; intellectual property</h2>
+  <p>You retain ownership of the content you create. By submitting content to a campaign, you grant the relevant brand the licence described in that campaign's terms, and you grant us a limited licence to host and display your submissions to operate the service.</p>
+
+  <h2>7. Suspension &amp; termination</h2>
+  <p>We may suspend or terminate your account if you breach these Terms, engage in fraud, or create risk for other users or brands. You may stop using the service and delete your account at any time — see <a href="/account-deletion">Delete my data</a>.</p>
+
+  <h2>8. Disclaimers</h2>
+  <p>The service is provided "as is" without warranties of any kind. We do not guarantee that you will be selected for campaigns or earn any particular amount. We are not responsible for the conduct of brands or other users.</p>
+
+  <h2>9. Limitation of liability</h2>
+  <p>To the fullest extent permitted by law, {LEGAL_ENTITY} will not be liable for any indirect, incidental or consequential damages arising from your use of the service. Our total liability is limited to the amount of rewards processed for you in the three months preceding the claim.</p>
+
+  <h2>10. Governing law</h2>
+  <p>These Terms are governed by the laws of {GOVERNING_LAW}, and any disputes are subject to the exclusive jurisdiction of its courts.</p>
+
+  <h2>11. Changes</h2>
+  <p>We may update these Terms from time to time. We will notify you of material changes; continued use after changes take effect means you accept the updated Terms.</p>
+
+  <h2>12. Contact</h2>
+  <p>Questions about these Terms? Email <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a>.</p>
+</Legal>

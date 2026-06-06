@@ -1,0 +1,104 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { SUPPORT_EMAIL, PRIVACY_EMAIL, CONTACT_EMAIL, ADMIN_PORTAL_URL } from '../consts.ts';
+
+const channels = [
+  { t: 'Creator support', d: 'Trouble with your account, applications, proofs or payouts? We’ve got you.', email: SUPPORT_EMAIL, tag: 'For creators' },
+  { t: 'Brand & agency', d: 'Questions about running campaigns or onboarding your brand to the portal.', email: CONTACT_EMAIL, tag: 'For brands' },
+  { t: 'Privacy & data', d: 'Access, correct or delete your personal data, or ask a privacy question.', email: PRIVACY_EMAIL, tag: 'Privacy' },
+];
+
+const quick = [
+  { q: 'How do I link my Instagram?', a: 'Go to Account → Linked accounts and tap Instagram. You’ll authorise securely through Instagram, then return to the app.', href: '/#faq' },
+  { q: 'When do I get paid?', a: 'After you submit your post link and the brand verifies your proof, your reward is confirmed per the campaign terms.', href: '/#faq' },
+  { q: 'How do I delete my account?', a: 'In-app via Account → Settings → Delete account, or email us. Full steps on the deletion page.', href: '/account-deletion' },
+  { q: 'Is it available outside Singapore?', a: 'We’re launching in Singapore first. Follow us to hear when we expand.', href: '/#faq' },
+];
+---
+<Layout title="Support" description="Get help with Creators Sphere — contact creator support, brand enquiries, or privacy requests.">
+  <section class="sup-hero grain">
+    <div class="blob"></div>
+    <div class="wrap">
+      <span class="eyebrow" data-reveal>● Help Centre</span>
+      <h1 data-reveal style="--reveal-delay:60ms">How can we <span class="grad-text">help?</span></h1>
+      <p class="lead" data-reveal style="--reveal-delay:120ms">
+        We usually reply within one business day. Pick the right channel below, or browse the quick answers.
+      </p>
+    </div>
+  </section>
+
+  <section class="section sup-channels">
+    <div class="wrap">
+      <div class="chan-grid">
+        {channels.map((c, i) => (
+          <article class="chan card card-hover" data-reveal style={`--reveal-delay:${i * 80}ms`}>
+            <span class="chip chip-coral">{c.tag}</span>
+            <h3>{c.t}</h3>
+            <p>{c.d}</p>
+            <a href={`mailto:${c.email}`} class="chan-mail">{c.email} →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section sup-quick">
+    <div class="wrap sup-quick-wrap">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow">Quick answers</span>
+        <h2>Sorted in <span class="serif-accent">seconds</span></h2>
+      </div>
+      <div class="quick-grid">
+        {quick.map((item, i) => (
+          <a href={item.href} class="quick card card-hover" data-reveal style={`--reveal-delay:${i * 60}ms`}>
+            <h3>{item.q}</h3>
+            <p>{item.a}</p>
+            <span class="quick-more">Read more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="sup-foot" data-reveal>
+        <div>
+          <h2>Are you a brand?</h2>
+          <p>Manage campaigns and creators from the admin portal.</p>
+        </div>
+        <a href={ADMIN_PORTAL_URL} target="_blank" rel="noopener" class="btn btn-brand btn-lg">Go to Admin Portal ↗</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sup-hero { position: relative; overflow: hidden; padding-block: clamp(3rem, 6vw, 5rem) clamp(2rem, 4vw, 3rem); text-align: center; }
+  .sup-hero .blob { position: absolute; width: 480px; height: 480px; border-radius: 50%; filter: blur(70px); opacity: .45; background: radial-gradient(circle, #FFD9A8, transparent 70%); top: -200px; left: 50%; transform: translateX(-50%); }
+  .sup-hero h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); margin: 16px 0; }
+  .sup-hero .lead { max-width: 52ch; margin: 0 auto; }
+
+  .chan-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .chan { padding: 28px 26px; display: flex; flex-direction: column; align-items: flex-start; }
+  .chan h3 { font-size: var(--fs-h3); margin: 14px 0 8px; }
+  .chan p { color: var(--ink-70); font-size: 15px; margin-bottom: 18px; flex: 1; }
+  .chan-mail { font-weight: 800; color: var(--coral); font-size: 15px; }
+  .chan-mail:hover { text-decoration: underline; }
+
+  .sup-quick { background: linear-gradient(180deg, var(--surface-2), var(--page)); }
+  .sup-quick-wrap { max-width: 900px; }
+  .sec-head { margin-bottom: clamp(1.6rem, 3vw, 2.4rem); }
+  .sec-head h2 { font-size: var(--fs-h2); margin-top: 12px; }
+  .quick-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .quick { padding: 24px; }
+  .quick h3 { font-size: 17px; margin-bottom: 8px; }
+  .quick p { color: var(--ink-70); font-size: 14.5px; margin-bottom: 14px; }
+  .quick-more { font-weight: 800; color: var(--coral); font-size: 13px; }
+
+  .sup-foot { display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between; background: var(--ink); color: #fff; border-radius: var(--r-xl); padding: clamp(2rem, 4vw, 3rem); }
+  .sup-foot h2 { color: #fff; font-size: var(--fs-h3); }
+  .sup-foot p { color: #C9BAAF; margin-top: 6px; }
+
+  @media (max-width: 860px) { .chan-grid { grid-template-columns: 1fr; } .quick-grid { grid-template-columns: 1fr; } }
+</style>

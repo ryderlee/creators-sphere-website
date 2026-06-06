@@ -1,0 +1,102 @@
+---
+// Stylized in-app screen rendered with the product's own design tokens
+// (mirrors the campaign card from the mobile app's home_mockup_v2).
+---
+<div class="phone" aria-hidden="true">
+  <div class="phone-screen">
+    <div class="app-top">
+      <div>
+        <p class="hi">Good evening</p>
+        <p class="name">Hi, Mei 👋</p>
+      </div>
+      <div class="ava"></div>
+    </div>
+
+    <div class="balance">
+      <span class="bal-label">Available to earn this week</span>
+      <span class="bal-amt">$1,240</span>
+      <span class="bal-pill"><i></i> 6 new gigs near you</span>
+    </div>
+
+    <p class="sec-h">Fresh campaigns</p>
+
+    <div class="ccard">
+      <div class="ccard-img img-a">
+        <span class="chip chip-ink tag">Beauty</span>
+        <span class="reward">$180</span>
+      </div>
+      <div class="ccard-body">
+        <span class="brand">GLOW LABS</span>
+        <h4>Summer glow, your way</h4>
+        <button class="apply">Apply now →</button>
+      </div>
+    </div>
+
+    <div class="ccard mini">
+      <div class="ccard-img img-b"></div>
+      <div class="ccard-body">
+        <span class="brand">KOPI &amp; CO</span>
+        <h4>Café reel · 1 post</h4>
+        <span class="reward-sm">$90 · Open</span>
+      </div>
+    </div>
+  </div>
+  <div class="nav-bar">
+    <span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+</div>
+
+<style>
+  .phone {
+    position: relative;
+    width: 300px;
+    background: #111;
+    padding: 9px;
+    border-radius: 46px;
+    box-shadow: 0 0 0 10px #0c0c0c, 0 0 0 12px #2a2a2a, var(--shadow-float);
+  }
+  .phone-screen {
+    background: var(--page);
+    border-radius: 38px;
+    padding: 22px 16px 14px;
+    overflow: hidden;
+  }
+  .app-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+  .hi { font-size: 11px; color: var(--ink-50); font-weight: 600; }
+  .name { font-family: var(--font-display); font-weight: 800; font-size: 18px; letter-spacing: -.02em; }
+  .ava { width: 38px; height: 38px; border-radius: 50%; background: var(--grad-sunset); box-shadow: 0 0 0 2.5px #fff, var(--shadow-sm); }
+
+  .balance {
+    display: flex; flex-direction: column; gap: 3px;
+    background: var(--ink); color: #fff; border-radius: 18px; padding: 15px 16px; margin-bottom: 18px;
+    position: relative; overflow: hidden;
+  }
+  .balance::after { content: ""; position: absolute; right: -30px; top: -30px; width: 110px; height: 110px; border-radius: 50%; background: var(--grad-coral); opacity: .85; }
+  .bal-label { font-size: 10.5px; color: #C4B8AE; font-weight: 600; position: relative; }
+  .bal-amt { font-family: var(--font-display); font-weight: 800; font-size: 34px; letter-spacing: -.03em; line-height: 1.1; position: relative; }
+  .bal-pill { font-size: 10px; font-weight: 800; color: var(--gold); display: inline-flex; align-items: center; gap: 6px; position: relative; }
+  .bal-pill i { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); box-shadow: 0 0 0 0 rgba(255,199,62,.6); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(255,199,62,.5)} 70%{box-shadow:0 0 0 7px rgba(255,199,62,0)} 100%{box-shadow:0 0 0 0 rgba(255,199,62,0)} }
+
+  .sec-h { font-family: var(--font-display); font-weight: 800; font-size: 14px; margin-bottom: 10px; }
+
+  .ccard { background: #fff; border: 1px solid var(--hair); border-radius: 18px; padding: 7px; box-shadow: var(--shadow-sm); margin-bottom: 11px; }
+  .ccard-img { height: 118px; border-radius: 12px; position: relative; background-size: cover; background-position: center; }
+  .img-a { background-image: url('/img/cat-beauty.jpg'); }
+  .img-b { width: 60px; height: 60px; border-radius: 12px; background-image: url('/img/cat-food.jpg'); background-size: cover; background-position: center; flex: none; }
+  .tag { position: absolute; top: 9px; left: 9px; }
+  .reward { position: absolute; bottom: 9px; right: 9px; background: #fff; color: var(--coral-deep); font-family: var(--font-display); font-weight: 800; font-size: 14px; padding: 4px 10px; border-radius: 100px; box-shadow: var(--shadow-sm); }
+  .ccard-body { padding: 9px 6px 4px; }
+  .brand { font-size: 9.5px; font-weight: 800; letter-spacing: .1em; color: var(--ink-50); }
+  .ccard-body h4 { font-family: var(--font-serif); font-style: italic; font-weight: 500; font-size: 16px; letter-spacing: -.01em; margin: 2px 0 9px; }
+  .apply { background: var(--grad-coral); color: #fff; font-family: var(--font); font-weight: 800; font-size: 12px; padding: 9px 14px; border-radius: 10px; width: 100%; }
+
+  .ccard.mini { display: flex; gap: 11px; align-items: center; padding: 8px; }
+  .ccard.mini .ccard-body { padding: 0; }
+  .ccard.mini h4 { margin: 2px 0 4px; font-size: 14px; }
+  .reward-sm { font-size: 11px; font-weight: 800; color: var(--success); }
+
+  .nav-bar { display: flex; justify-content: center; gap: 9px; padding: 14px 0 4px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--ink-30); }
+  .dot.active { width: 22px; border-radius: 100px; background: var(--coral); }
+</style>

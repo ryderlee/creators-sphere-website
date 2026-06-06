@@ -1,0 +1,178 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { ADMIN_PORTAL_URL } from '../consts.ts';
+
+const flow = [
+  { n: '01', t: 'Brief your campaign', d: 'Set the goal, deliverables, niche and reward. Open to all, or invite-only — your call.' },
+  { n: '02', t: 'Match the right creators', d: 'Browse and shortlist creators by niche and reach, or let qualified applicants come to you.' },
+  { n: '03', t: 'Vet the content', d: 'Review uploaded content before it goes live so every post is on-brand and on-message.' },
+  { n: '04', t: 'Track proof & ROI', d: 'Verify live posts, release rewards, and watch performance roll in — all in one dashboard.' },
+];
+
+const capabilities = [
+  { t: 'Open & invite-only campaigns', d: 'Cast a wide net or hand-pick a tight roster. Both flows are first-class.' },
+  { t: 'Creator discovery', d: 'Filter the creator pool by niche, platform and audience to build your shortlist fast.' },
+  { t: 'Content vetting workflow', d: 'Approve, comment or request changes before anything is published.' },
+  { t: 'Proof verification', d: 'Confirm live posts against the brief before any reward is released.' },
+  { t: 'Payouts & invoicing', d: 'Manage campaign budgets, rewards and client invoices in one place.' },
+  { t: 'Real-time analytics', d: 'Applicants, approvals, completion and spend — measured as it happens.' },
+];
+
+const stats = [
+  { k: 'One', v: 'dashboard for every campaign' },
+  { k: '2', v: 'campaign types — open & invite-only' },
+  { k: '100%', v: 'content vetted before it posts' },
+];
+---
+<Layout
+  title="For Brands"
+  description="Creators Sphere for brands & agencies — launch influencer campaigns, discover creators, vet content and track ROI from one dashboard."
+>
+  <!-- HERO -->
+  <section class="b-hero grain">
+    <div class="wrap wrap-wide b-hero-grid">
+      <div data-reveal>
+        <span class="eyebrow on-dark">For Brands &amp; Agencies</span>
+        <h1>Influencer campaigns, <span class="grad-text">minus the chaos.</span></h1>
+        <p class="lead">
+          Creators Sphere gives marketing teams one dashboard to brief campaigns, match
+          creators, vet content and measure results — connected to a live network of
+          creators in Singapore.
+        </p>
+        <div class="b-cta">
+          <a href={ADMIN_PORTAL_URL} target="_blank" rel="noopener" class="btn btn-brand btn-lg">Go to Admin Portal ↗</a>
+          <a href="#how-brands" class="btn btn-ghost btn-lg on-dark-ghost">How it works</a>
+        </div>
+        <div class="b-stats">
+          {stats.map((s) => (
+            <div><strong>{s.k}</strong><span>{s.v}</span></div>
+          ))}
+        </div>
+      </div>
+      <div class="b-hero-visual" data-reveal style="--reveal-delay:120ms">
+        <img src="/img/brands-work.jpg" alt="A marketing team reviewing a campaign" loading="eager" />
+        <div class="bv-card">
+          <span class="bv-chip">Live campaign</span>
+          <strong>Summer Glow</strong>
+          <div class="bv-row"><span>Applicants</span><b>248</b></div>
+          <div class="bv-row"><span>Approved</span><b>32</b></div>
+          <div class="bv-bar"><i style="width:72%"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how-brands">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow b-accent">The workflow</span>
+        <h2>Launch a campaign in <span class="serif-accent">four steps</span></h2>
+        <p class="lead">From first brief to verified results — without spreadsheets, group chats or guesswork.</p>
+      </div>
+      <div class="b-flow">
+        {flow.map((s, i) => (
+          <div class="b-step card card-hover" data-reveal style={`--reveal-delay:${i * 80}ms`}>
+            <span class="b-step-n">{s.n}</span>
+            <h3>{s.t}</h3>
+            <p>{s.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section class="section b-caps">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <span class="eyebrow b-accent">Everything in the portal</span>
+        <h2>One platform, <span class="serif-accent">end to end</span></h2>
+      </div>
+      <div class="caps-grid">
+        {capabilities.map((c, i) => (
+          <article class="cap card card-hover" data-reveal style={`--reveal-delay:${i * 60}ms`}>
+            <span class="cap-tick">✓</span>
+            <h3>{c.t}</h3>
+            <p>{c.d}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="wrap">
+      <div class="b-final grain" data-reveal>
+        <div class="bf-blob"></div>
+        <span class="eyebrow on-dark">Ready when you are</span>
+        <h2>Put your next campaign in front of <span class="grad-text">real creators.</span></h2>
+        <p>Sign in to the admin portal to brief your first campaign, or talk to us about onboarding your brand.</p>
+        <div class="b-final-cta">
+          <a href={ADMIN_PORTAL_URL} target="_blank" rel="noopener" class="btn btn-brand btn-lg">Go to Admin Portal ↗</a>
+          <a href="/support" class="btn btn-ghost btn-lg on-dark-ghost">Talk to us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .b-accent { color: var(--indigo); }
+
+  .b-hero { position: relative; overflow: hidden; background: var(--ink); color: #EADFD6; padding-block: clamp(3.5rem, 8vw, 6.5rem); }
+  .b-hero::before { content: ""; position: absolute; inset: 0; background: radial-gradient(820px 420px at 86% 6%, rgba(124,58,237,.4), transparent 60%), radial-gradient(620px 360px at 4% 100%, rgba(255,82,38,.3), transparent 60%); }
+  .b-hero-grid { position: relative; display: grid; grid-template-columns: 1.05fr .95fr; gap: clamp(2.2rem, 5vw, 4.5rem); align-items: center; }
+  .b-hero h1 { color: #fff; font-size: var(--fs-hero); margin: 16px 0 20px; }
+  .b-hero .lead { color: #C9BAAF; max-width: 48ch; }
+  .b-cta { display: flex; flex-wrap: wrap; gap: 12px; margin: 30px 0 34px; }
+  .on-dark-ghost { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.2); color: #fff; }
+  .on-dark-ghost:hover { background: rgba(255,255,255,.12); border-color: #fff; color: #fff; }
+
+  .b-stats { display: flex; flex-wrap: wrap; gap: 28px; padding-top: 26px; border-top: 1px solid rgba(255,255,255,.12); }
+  .b-stats strong { display: block; font-family: var(--font-display); font-weight: 800; font-size: clamp(26px, 3.4vw, 38px); letter-spacing: -.03em; color: var(--gold); line-height: 1; }
+  .b-stats span { font-size: 13px; color: #B7A89D; max-width: 18ch; display: block; margin-top: 6px; }
+
+  .b-hero-visual { position: relative; }
+  .b-hero-visual > img { width: 100%; border-radius: var(--r-xl); box-shadow: var(--shadow-float); }
+  .bv-card { position: absolute; bottom: -22px; left: -22px; background: #fff; color: var(--ink); border-radius: 18px; padding: 18px 20px; width: 230px; box-shadow: var(--shadow-float); }
+  .bv-chip { display: inline-block; font-size: 10px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: var(--indigo); background: #EFEAFE; padding: 4px 10px; border-radius: 100px; margin-bottom: 10px; }
+  .bv-card > strong { font-family: var(--font-display); font-size: 18px; display: block; margin-bottom: 12px; }
+  .bv-row { display: flex; justify-content: space-between; font-size: 13px; color: var(--ink-70); padding: 4px 0; }
+  .bv-row b { color: var(--ink); }
+  .bv-bar { height: 8px; border-radius: 100px; background: var(--hair); margin-top: 8px; overflow: hidden; }
+  .bv-bar i { display: block; height: 100%; background: var(--grad-brand); border-radius: 100px; }
+
+  .sec-head { max-width: 640px; margin-bottom: clamp(2rem, 4vw, 3.2rem); }
+  .sec-head h2 { font-size: var(--fs-h2); margin: 14px 0; }
+
+  .b-flow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .b-step { padding: 26px 22px; }
+  .b-step-n { font-family: var(--font-display); font-weight: 800; font-size: 15px; color: #fff; background: var(--grad-brand); width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; margin-bottom: 18px; }
+  .b-step h3 { font-size: var(--fs-h3); margin-bottom: 8px; }
+  .b-step p { color: var(--ink-70); font-size: 15px; }
+
+  .b-caps { background: linear-gradient(180deg, #F4F1FB, var(--page)); }
+  .caps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .cap { padding: 26px 24px; }
+  .cap-tick { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: #EFEAFE; color: var(--indigo); font-weight: 800; margin-bottom: 16px; }
+  .cap h3 { font-size: var(--fs-h3); margin-bottom: 8px; }
+  .cap p { color: var(--ink-70); font-size: 15px; }
+
+  .b-final { position: relative; overflow: hidden; background: var(--ink); color: #fff; border-radius: var(--r-xl); padding: clamp(2.6rem, 6vw, 4.6rem); text-align: center; }
+  .bf-blob { position: absolute; inset: 0; background: radial-gradient(640px 320px at 50% -10%, rgba(124,58,237,.45), transparent 60%), radial-gradient(480px 300px at 88% 120%, rgba(255,82,38,.32), transparent 60%); }
+  .b-final > * { position: relative; }
+  .b-final h2 { color: #fff; font-size: var(--fs-h1); margin: 14px auto; max-width: 20ch; }
+  .b-final > p { color: #D7C8BD; font-size: var(--fs-lead); max-width: 44ch; margin: 0 auto 28px; }
+  .b-final-cta { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+
+  @media (max-width: 980px) {
+    .b-hero-grid { grid-template-columns: 1fr; }
+    .b-flow, .caps-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .b-flow, .caps-grid { grid-template-columns: 1fr; }
+    .bv-card { left: 50%; transform: translateX(-50%); }
+  }
+</style>

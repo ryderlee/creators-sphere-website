@@ -1,0 +1,38 @@
+---
+// Creators Sphere wordmark: a gradient "sphere" with an orbiting creator dot.
+interface Props { onDark?: boolean; compact?: boolean; }
+const { onDark = false, compact = false } = Astro.props;
+const id = 'lg' + Math.random().toString(36).slice(2, 8);
+---
+<a href="/" class="logo" aria-label="Creators Sphere — home">
+  <svg width="34" height="34" viewBox="0 0 34 34" fill="none" aria-hidden="true">
+    <defs>
+      <linearGradient id={id} x1="2" y1="3" x2="31" y2="31" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#FF5226" />
+        <stop offset="0.55" stop-color="#FF9322" />
+        <stop offset="1" stop-color="#FFC73E" />
+      </linearGradient>
+    </defs>
+    <circle cx="17" cy="17" r="11" fill={`url(#${id})`} />
+    <ellipse cx="17" cy="17" rx="15.5" ry="6.6" stroke="#2A1712" stroke-opacity={onDark ? '0' : '0.85'} stroke-width="1.6" transform="rotate(-28 17 17)" />
+    {onDark && <ellipse cx="17" cy="17" rx="15.5" ry="6.6" stroke="#fff" stroke-opacity="0.85" stroke-width="1.6" transform="rotate(-28 17 17)" />}
+    <circle cx="30.2" cy="9.6" r="2.6" fill="#FF5226" stroke={onDark ? '#1d120c' : '#FBF8F4'} stroke-width="1.8" />
+  </svg>
+  {!compact && (
+    <span class="logo-word" style={onDark ? 'color:#fff' : ''}>
+      Creators<span class="logo-thin">Sphere</span>
+    </span>
+  )}
+</a>
+
+<style>
+  .logo { display: inline-flex; align-items: center; gap: 10px; }
+  .logo-word {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 19px;
+    letter-spacing: -.04em;
+    color: var(--ink);
+  }
+  .logo-thin { font-weight: 800; color: var(--coral); margin-left: 3px; }
+</style>

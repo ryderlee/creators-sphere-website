@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" font-family="'Bricolage Grotesque','Manrope',sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="630" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF5226"/>
+      <stop offset="0.55" stop-color="#FF9322"/>
+      <stop offset="1" stop-color="#FFC73E"/>
+    </linearGradient>
+    <linearGradient id="sph" x1="820" y1="150" x2="1080" y2="430" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFE9C2"/>
+      <stop offset="1" stop-color="#FF7A45"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#2A1712"/>
+  <rect width="1200" height="630" fill="url(#bg)" opacity="0.12"/>
+  <circle cx="980" cy="300" r="150" fill="url(#sph)"/>
+  <ellipse cx="980" cy="300" rx="215" ry="86" fill="none" stroke="#FFC73E" stroke-width="4" transform="rotate(-26 980 300)" opacity="0.9"/>
+  <circle cx="1162" cy="180" r="13" fill="#FF5226" stroke="#2A1712" stroke-width="5"/>
+  <text x="90" y="150" fill="#FFC73E" font-size="26" font-weight="800" letter-spacing="6">CREATORS SPHERE · SINGAPORE</text>
+  <text x="86" y="285" fill="#fff" font-size="92" font-weight="800" letter-spacing="-3">Your next paycheck</text>
+  <text x="86" y="385" fill="#fff" font-size="92" font-weight="800" letter-spacing="-3">is one <tspan fill="#FFC73E">tap</tspan> away.</text>
+  <text x="90" y="470" fill="#F3E5D8" font-size="30" font-weight="600" font-family="'Manrope',sans-serif">Fresh brand campaigns for creators — discover, create, get paid.</text>
+</svg>

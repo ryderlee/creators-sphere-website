@@ -1,0 +1,70 @@
+---
+import Layout from './Layout.astro';
+import { LEGAL_LAST_UPDATED } from '../consts.ts';
+
+interface Props {
+  title: string;
+  description?: string;
+  intro?: string;
+  draft?: boolean; // show the "template — review before publishing" banner
+}
+const { title, description, intro, draft = true } = Astro.props;
+---
+<Layout title={title} description={description}>
+  <article class="legal">
+    <div class="wrap legal-wrap">
+      <header class="legal-head">
+        <a href="/" class="legal-back">← Back to home</a>
+        <h1>{title}</h1>
+        <p class="legal-date">Last updated: {LEGAL_LAST_UPDATED}</p>
+        {intro && <p class="legal-intro">{intro}</p>}
+      </header>
+
+      {draft && (
+        <aside class="legal-note" role="note">
+          <strong>⚠︎ Template — review before publishing.</strong>
+          This document is a starting point tailored to the app, not legal advice. Have it
+          reviewed by qualified counsel and replace every <code>[BRACKETED]</code> placeholder
+          before going live.
+        </aside>
+      )}
+
+      <div class="prose">
+        <slot />
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .legal { padding-block: clamp(2.5rem, 5vw, 4.5rem) clamp(3rem, 6vw, 5rem); }
+  .legal-wrap { max-width: 760px; }
+  .legal-back { display: inline-block; font-weight: 700; font-size: 14px; color: var(--coral); margin-bottom: 22px; }
+  .legal-back:hover { text-decoration: underline; }
+  .legal-head h1 { font-size: clamp(2rem, 4.5vw, 3rem); }
+  .legal-date { color: var(--ink-50); font-size: 14px; margin-top: 12px; }
+  .legal-intro { color: var(--ink-70); font-size: var(--fs-lead); line-height: 1.65; margin-top: 18px; }
+
+  .legal-note {
+    background: #FFF4D6; border: 1px solid #F2D58A; border-radius: var(--r-card);
+    padding: 16px 20px; margin: 28px 0; font-size: 14px; color: #6b4e00; line-height: 1.6;
+  }
+  .legal-note strong { display: block; margin-bottom: 4px; color: #5c4300; }
+  .legal-note code { background: rgba(0,0,0,.06); padding: 1px 6px; border-radius: 5px; font-size: 13px; }
+
+  .prose { margin-top: 32px; }
+  .prose :global(h2) { font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin: 38px 0 12px; }
+  .prose :global(h3) { font-size: 1.15rem; margin: 26px 0 10px; }
+  .prose :global(p) { color: var(--ink-70); line-height: 1.75; margin-bottom: 16px; }
+  .prose :global(ul) { list-style: none; margin: 0 0 18px; display: grid; gap: 10px; }
+  .prose :global(li) { position: relative; padding-left: 26px; color: var(--ink-70); line-height: 1.7; }
+  .prose :global(li)::before { content: ""; position: absolute; left: 4px; top: 11px; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+  .prose :global(a) { color: var(--coral); font-weight: 600; }
+  .prose :global(a:hover) { text-decoration: underline; }
+  .prose :global(strong) { color: var(--ink); }
+  .prose :global(table) { width: 100%; border-collapse: collapse; margin: 8px 0 22px; font-size: 14px; }
+  .prose :global(th), .prose :global(td) { text-align: left; padding: 11px 12px; border-bottom: 1px solid var(--hair); vertical-align: top; }
+  .prose :global(th) { font-family: var(--font-display); font-weight: 800; color: var(--ink); }
+  .prose :global(td) { color: var(--ink-70); }
+  .prose :global(hr) { border: none; border-top: 1px solid var(--hair); margin: 32px 0; }
+</style>

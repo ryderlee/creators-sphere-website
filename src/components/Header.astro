@@ -1,0 +1,102 @@
+---
+import Logo from './Logo.astro';
+import { NAV_LINKS } from '../consts.ts';
+---
+<header class="hdr" id="site-header">
+  <div class="wrap wrap-wide hdr-inner">
+    <Logo />
+
+    <nav class="nav-pill" aria-label="Primary">
+      {NAV_LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
+    </nav>
+
+    <div class="hdr-actions">
+      <a href="/#download" class="btn btn-primary hdr-cta">Get the app</a>
+      <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    {NAV_LINKS.map((l) => <a href={l.href}>{l.label}</a>)}
+    <a href="/#download" class="btn btn-primary mm-cta">Get the app</a>
+  </div>
+</header>
+
+<style>
+  .hdr {
+    position: sticky; top: 0; z-index: 100;
+    background: color-mix(in srgb, var(--page) 82%, transparent);
+    backdrop-filter: saturate(140%) blur(14px);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--t), background var(--t), box-shadow var(--t);
+  }
+  .hdr.scrolled { border-bottom-color: var(--hair); box-shadow: var(--shadow-sm); }
+  .hdr-inner { display: flex; align-items: center; gap: 18px; height: 72px; }
+
+  .nav-pill {
+    margin-inline: auto;
+    display: flex; align-items: center; gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: var(--r-pill);
+    padding: 5px;
+    box-shadow: var(--shadow-sm);
+  }
+  .nav-pill a {
+    font-weight: 700; font-size: 14px; color: var(--ink-70);
+    padding: 9px 16px; border-radius: var(--r-pill);
+    transition: color var(--t), background var(--t);
+  }
+  .nav-pill a:hover { color: var(--ink); background: var(--peach); }
+
+  .hdr-actions { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+  .hdr-cta { padding: 11px 20px; font-size: 14px; }
+
+  .burger { display: none; flex-direction: column; gap: 5px; padding: 8px; }
+  .burger span { width: 22px; height: 2.5px; background: var(--ink); border-radius: 3px; transition: var(--t); }
+  .burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    display: flex; flex-direction: column; gap: 4px;
+    padding: 10px var(--gutter) 22px;
+    border-top: 1px solid var(--hair);
+    background: var(--page);
+  }
+  .mobile-menu[hidden] { display: none; }
+  .mobile-menu a { font-weight: 700; font-size: 16px; padding: 13px 6px; color: var(--ink); border-bottom: 1px solid var(--hair); }
+  .mobile-menu .mm-cta { margin-top: 14px; border-bottom: none; justify-content: center; }
+
+  @media (max-width: 920px) {
+    .nav-pill, .hdr-cta { display: none; }
+    .burger { display: flex; }
+  }
+  @media (min-width: 921px) {
+    .mobile-menu { display: none !important; }
+  }
+</style>
+
+<script>
+  const header = document.getElementById('site-header');
+  const burger = header?.querySelector('.burger') as HTMLButtonElement | null;
+  const menu = document.getElementById('mobile-menu');
+
+  burger?.addEventListener('click', () => {
+    const open = burger.getAttribute('aria-expanded') === 'true';
+    burger.setAttribute('aria-expanded', String(!open));
+    if (menu) menu.hidden = open;
+  });
+  menu?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      burger?.setAttribute('aria-expanded', 'false');
+      if (menu) menu.hidden = true;
+    })
+  );
+
+  const onScroll = () => header?.classList.toggle('scrolled', window.scrollY > 8);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>

@@ -1,0 +1,40 @@
+---
+import Legal from '../layouts/Legal.astro';
+import { PRIVACY_EMAIL, SUPPORT_EMAIL } from '../consts.ts';
+---
+<Legal
+  title="Delete your account & data"
+  description="How to delete your Creators Sphere account and associated personal data."
+  intro="You can delete your Creators Sphere account and personal data at any time. This page explains how, what gets removed, and what we may need to keep."
+>
+  <h2>Option 1 — Delete in the app</h2>
+  <ul>
+    <li>Open Creators Sphere and go to <strong>Account → Settings</strong>.</li>
+    <li>Tap <strong>Delete account</strong>.</li>
+    <li>Confirm. Your account is deactivated immediately and queued for permanent deletion.</li>
+  </ul>
+
+  <h2>Option 2 — Request by email</h2>
+  <p>
+    If you can't access the app, email <a href={`mailto:${PRIVACY_EMAIL}`}>{PRIVACY_EMAIL}</a> from the
+    address on your account with the subject <strong>"Delete my account"</strong>. We may ask you to
+    verify your identity before we proceed.
+  </p>
+
+  <h2>What gets deleted</h2>
+  <ul>
+    <li>Your profile and account credentials.</li>
+    <li>Your linked social account connections (Instagram, Threads, Facebook).</li>
+    <li>Your application history, content submissions and proof links.</li>
+    <li>Your push notification tokens and analytics identifiers.</li>
+  </ul>
+
+  <h2>What we may retain</h2>
+  <p>We may keep limited records where the law requires it or for legitimate business needs — for example, transaction records relating to rewards already paid, or data needed to resolve disputes and prevent fraud. Retained data is kept only as long as necessary and then securely deleted.</p>
+
+  <h2>Timeline</h2>
+  <p>Account deletion requests are completed within <strong>30 days</strong>. You will receive confirmation once the deletion is complete.</p>
+
+  <hr />
+  <p>Need help? Contact <a href={`mailto:${SUPPORT_EMAIL}`}>{SUPPORT_EMAIL}</a> or visit our <a href="/support">support page</a>.</p>
+</Legal>

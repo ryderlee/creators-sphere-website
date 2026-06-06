@@ -1,0 +1,53 @@
+---
+// App store badges. When APP_STORE_URL / PLAY_STORE_URL are null (pre-launch),
+// they render as non-linking "Coming soon" badges.
+import { APP_STORE_URL, PLAY_STORE_URL } from '../consts.ts';
+interface Props { onDark?: boolean; }
+const { onDark = false } = Astro.props;
+
+const badges = [
+  { store: 'App Store', sub: APP_STORE_URL ? 'Download on the' : 'Coming soon to', href: APP_STORE_URL, icon: 'apple' },
+  { store: 'Google Play', sub: PLAY_STORE_URL ? 'Get it on' : 'Coming soon to', href: PLAY_STORE_URL, icon: 'play' },
+];
+---
+<div class={`badges ${onDark ? 'on-dark' : ''}`}>
+  {badges.map((b) => {
+    const Tag = b.href ? 'a' : 'span';
+    return (
+      <Tag
+        class:list={['badge', { disabled: !b.href }]}
+        {...(b.href ? { href: b.href, target: '_blank', rel: 'noopener' } : { 'aria-disabled': 'true' })}
+      >
+        {b.icon === 'apple' ? (
+          <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M16.36 12.78c.02 2.5 2.2 3.33 2.22 3.34-.02.06-.35 1.2-1.15 2.38-.69 1.02-1.41 2.03-2.55 2.05-1.11.02-1.47-.66-2.75-.66-1.27 0-1.67.64-2.72.68-1.09.04-1.92-1.1-2.62-2.12-1.43-2.07-2.52-5.85-1.05-8.4.73-1.27 2.03-2.07 3.44-2.09 1.07-.02 2.09.72 2.75.72.66 0 1.9-.89 3.2-.76.54.02 2.07.22 3.05 1.65-.08.05-1.82 1.06-1.8 3.18M14.3 5.4c.58-.7.97-1.68.86-2.65-.84.03-1.85.56-2.45 1.26-.54.62-1.01 1.61-.88 2.56.93.07 1.89-.47 2.47-1.17"/></svg>
+        ) : (
+          <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3.6 2.3c-.2.2-.3.5-.3 1v17.4c0 .5.1.8.3 1l9.3-9.7L3.6 2.3m11 5.9L5.9 3.2l10.8 6.3-2.1 2.1m3.4 2-2.6-1.5-2.3 2.3 2.3 2.3 2.6-1.5c.8-.5.8-1.6 0-2.1M5.9 20.8l8.7-5-2.1-2.1-6.6 7.1"/></svg>
+        )}
+        <span class="badge-txt"><small>{b.sub}</small><strong>{b.store}</strong></span>
+      </Tag>
+    );
+  })}
+</div>
+
+<style>
+  .badges { display: flex; flex-wrap: wrap; gap: 12px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 11px;
+    padding: 11px 18px; border-radius: 14px;
+    background: var(--ink); color: #fff;
+    transition: transform var(--t), box-shadow var(--t), opacity var(--t);
+    box-shadow: var(--shadow);
+  }
+  .badge:not(.disabled):hover { transform: translateY(-2px); box-shadow: var(--shadow-lift); }
+  .badge.disabled { cursor: default; opacity: .9; }
+  .badge.disabled::after {
+    content: "Soon"; margin-left: 2px;
+    font-size: 9px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(255, 199, 62, .5); border-radius: 100px; padding: 2px 7px;
+  }
+  .badge-txt { display: flex; flex-direction: column; line-height: 1.15; text-align: left; }
+  .badge-txt small { font-size: 10px; font-weight: 600; color: #C4B8AE; letter-spacing: .02em; }
+  .badge-txt strong { font-family: var(--font-display); font-size: 17px; font-weight: 800; letter-spacing: -.02em; }
+  .on-dark .badge { background: #fff; color: var(--ink); }
+  .on-dark .badge-txt small { color: var(--ink-50); }
+</style>
