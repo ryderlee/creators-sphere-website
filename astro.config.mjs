@@ -1,14 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-// Deployed as a GitHub Pages *project* site:
-//   https://ryderlee.github.io/creators-sphere-website/
-// To move to the custom domain later: set `site: 'https://creatorssphere.sg'`,
-// `base: '/'`, and re-add public/CNAME. All internal links use BASE_URL, so
-// they adjust automatically.
+// Deployed to the custom domain https://creatorsphere.sg (see public/CNAME).
+// All internal links go through src/base.ts `url()`, which follows BASE_URL,
+// so switching `base` back to a subpath needs no other edits.
 export default defineConfig({
-  site: 'https://ryderlee.github.io',
-  base: '/creators-sphere-website',
+  site: 'https://creatorsphere.sg',
+  base: '/',
   output: 'static',
   trailingSlash: 'ignore',
   build: {
